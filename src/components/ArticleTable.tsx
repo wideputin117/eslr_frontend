@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Article } from '../types';
-import { apiClient } from '../api/client';
 import ReviewModal from "../pages/ReviewModal";
 
 interface ArticleTableProps {
@@ -9,7 +8,7 @@ interface ArticleTableProps {
   onReviewUpdate: () => Promise<void>;
 }
 
-const ArticleTable: React.FC<ArticleTableProps> = ({ articles, projectId, onReviewUpdate }) => {
+const ArticleTable: React.FC<ArticleTableProps> = ({ articles, onReviewUpdate }) => {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [showReviewModal, setShowReviewModal] = useState(false);
 

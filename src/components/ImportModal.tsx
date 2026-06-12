@@ -9,7 +9,6 @@ interface ImportModalProps {
 }
 
 const ImportModal: React.FC<ImportModalProps> = ({ projectId, onClose, onSuccess }) => {
-  const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<ImportPreviewResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isCommitting, setIsCommitting] = useState(false);
@@ -20,7 +19,6 @@ const ImportModal: React.FC<ImportModalProps> = ({ projectId, onClose, onSuccess
     const selectedFile = e.target.files?.[0];
     if (!selectedFile) return;
 
-    setFile(selectedFile);
     setIsLoading(true);
     setError(null);
 
@@ -29,7 +27,6 @@ const ImportModal: React.FC<ImportModalProps> = ({ projectId, onClose, onSuccess
       setPreview(previewData);
     } catch (err: any) {
       setError('Failed to preview file');
-      setFile(null);
     } finally {
       setIsLoading(false);
     }
